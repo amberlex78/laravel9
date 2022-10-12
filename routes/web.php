@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['as' => 'frontend.'], static function () {
-    Route::get('/', HomeController::class)->name('home');
+Auth::routes();
+
+Route::group(['as' => 'backend.', 'prefix' => 'backend'], static function () {
+    require_once __DIR__ . '/backend.php';
 });
 
-Auth::routes();
+Route::group(['as' => 'frontend.'], static function () {
+    require_once __DIR__ . '/frontend.php';
+});
