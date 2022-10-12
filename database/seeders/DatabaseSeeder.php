@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Seeder;
 use Str;
 
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
+        DB::table('users')->insert([
             [
                 'name' => 'AdminName',
                 'email' => 'admin@example.com',
